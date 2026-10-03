@@ -33,12 +33,16 @@ Un workflow de GitHub Actions la consulta los días hábiles y GitHub Pages la s
 
 ### Tasa vigente para una fecha
 
+Cada tasa rige **desde el día siguiente a la fecha valor anterior** hasta su propia fecha valor.
+La tasa del lunes se usa desde el sábado. Si el lunes es feriado, la del martes también se usa desde el sábado.
+
 ```
-si hoy >= fecha_valor   → usd
-si no                   → anterior.usd
+si anterior es null o hoy > anterior.fecha_valor   → usd
+si no                                              → anterior.usd
 ```
 
-Para fechas más antiguas se usa `history/<año>.json`: la entrada con la mayor `fecha_valor <= fecha`.
+Para cualquier fecha `D` se usa `history/<año>.json`: la entrada con la **menor** `fecha_valor >= D`.
+Si no hay ninguna, se usa la última.
 
 ## Uso desde otros sistemas
 
