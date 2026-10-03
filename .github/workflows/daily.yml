@@ -1,0 +1,48 @@
+name: Tasa BCV
+
+on:
+  schedule:
+    # Hora de Venezuela = UTC-4. El BCV suele publicar entre 3 y 6 pm.
+    - cron: "0 13 * * 1-5"   # 9:00 am VET (recuperación si falló la tarde anterior)
+    - cron: "0 20 * * 1-5"   # 4:00 pm VET
+    - cron: "0 23 * * 1-5"   # 7:00 pm VET
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Omitir la validación de variación máxima"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tasa-bcv
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Obtener tasa
+        env:
+          FORCE: ${{ inputs.force && '1' || '0' }}
+        run: python scraper/fetch.py
+
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+          else
+            git commit -m "Tasa BCV $(jq -r .fecha_valor docs/latest.json): USD $(jq -r .usd docs/latest.json)"
+            git push
+          fi
