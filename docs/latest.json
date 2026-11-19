@@ -1,16 +1,13 @@
 {
-  "usd": 916.6477,
-  "fecha_valor": "2026-11-18",
-  "eur": 1007.38665582,
+  "usd": 917.7751,
+  "fecha_valor": "2026-11-19",
+  "eur": 1007.39583851,
   "fuente": "ve.dolarapi.com",
   "anterior": {
-    "fecha_valor": "2026-11-17",
-    "usd": 915.7476,
-    "eur": 1008.3113674,
-    "cny": 137.41916895,
-    "try": 18.17348955,
-    "rub": 11.09244149,
-    "fuente": "bcv.org.ve"
+    "fecha_valor": "2026-11-18",
+    "usd": 916.6477,
+    "eur": 1007.38665582,
+    "fuente": "ve.dolarapi.com"
   },
-  "actualizado": "2026-11-19T01:47:27Z"
+  "actualizado": "2026-11-19T04:03:34Z"
 }
