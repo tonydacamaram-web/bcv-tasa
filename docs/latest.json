@@ -1,13 +1,13 @@
 {
-  "usd": 922.5637,
-  "fecha_valor": "2026-11-25",
-  "eur": 1012.21844036,
+  "usd": 924.3534,
+  "fecha_valor": "2026-11-26",
+  "eur": 1011.7325269,
   "fuente": "ve.dolarapi.com",
   "anterior": {
-    "fecha_valor": "2026-11-24",
-    "usd": 919.8227,
-    "eur": 1011.17949056,
+    "fecha_valor": "2026-11-25",
+    "usd": 922.5637,
+    "eur": 1012.21844036,
     "fuente": "ve.dolarapi.com"
   },
-  "actualizado": "2026-11-25T05:21:23Z"
+  "actualizado": "2026-11-26T04:52:34Z"
 }
